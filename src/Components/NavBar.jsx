@@ -4,65 +4,58 @@ const NavBar = () => {
   const navLinks = (
     <ul className="menu menu-horizontal px-1 flex gap-4 font-semibold">
       <NavLink
+      to={'/'}
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
             : isActive
-            ? "h-full text-orange-600 underline font-bold"
+            ? "h-full text-orange-500 font-bold"
             : ""
         }
       >
         Home
       </NavLink>
       <NavLink
+      to={'about'}
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
             : isActive
-            ? "h-full text-orange-600 underline font-bold"
+            ? "h-full text-orange-500 font-bold"
             : ""
         }
       >
         About Us
       </NavLink>
       <NavLink
+      to={'contact'}
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
             : isActive
-            ? "h-full text-orange-600 underline font-bold"
+            ? "h-full text-orange-500 font-bold"
             : ""
         }
       >
         Contact
       </NavLink>
       <NavLink
+      to={'/blog'}
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
             : isActive
-            ? "h-full text-orange-600 underline font-bold"
+            ? "h-full text-orange-500 font-bold"
             : ""
         }
       >
         Blogs
       </NavLink>
-      <NavLink
-        className={({ isActive, isPending }) =>
-          isPending
-            ? "pending"
-            : isActive
-            ? "h-full text-orange-600 underline font-bold"
-            : ""
-        }
-      >
-        Login
-      </NavLink>
     </ul>
   );
 
   return (
-    <div className="navbar bg-slate-100">
+    <div className="navbar">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -88,12 +81,11 @@ const NavBar = () => {
             {navLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
       </div>
       <div className="navbar-center hidden lg:flex">{navLinks}</div>
 
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <button className="btn btn-sm bg-orange-500 text-white">Login</button>
       </div>
     </div>
   );
