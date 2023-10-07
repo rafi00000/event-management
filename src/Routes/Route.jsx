@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layout/MainLayout";
 import Home from "../Pages/Home";
+import ServiceDetails from "../Components/ServiceDetails";
 
 const route = createBrowserRouter([
     {
@@ -11,6 +12,10 @@ const route = createBrowserRouter([
                 path: '/',
                 element: <Home></Home>,
                 loader: ()=> fetch('/data.json')
+            }, 
+            {
+                path: '/service/:id',
+                element: <ServiceDetails></ServiceDetails>
             }
         ]
     }
