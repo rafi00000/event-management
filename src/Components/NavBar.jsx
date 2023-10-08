@@ -9,7 +9,7 @@ const NavBar = () => {
           isPending
             ? "pending"
             : isActive
-            ? "h-full text-orange-500 font-bold"
+            ? "h-full text-cyan-500 font-bold underline"
             : ""
         }
       >
@@ -21,41 +21,29 @@ const NavBar = () => {
           isPending
             ? "pending"
             : isActive
-            ? "h-full text-orange-500 font-bold"
+            ? "h-full text-cyan-500 font-bold underline"
             : ""
         }
       >
         About Us
       </NavLink>
       <NavLink
-      to={'contact'}
+      to={'contactus'}
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
             : isActive
-            ? "h-full text-orange-500 font-bold"
+            ? "h-full text-cyan-500 font-bold underline"
             : ""
         }
       >
         Contact
       </NavLink>
-      <NavLink
-      to={'/blog'}
-        className={({ isActive, isPending }) =>
-          isPending
-            ? "pending"
-            : isActive
-            ? "h-full text-orange-500 font-bold"
-            : ""
-        }
-      >
-        Blogs
-      </NavLink>
     </ul>
   );
 
   return (
-    <div className="navbar">
+    <div className="navbar bg-orange-600 text-white rounded-lg mb-5">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

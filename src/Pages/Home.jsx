@@ -2,6 +2,8 @@ import { useLoaderData } from "react-router-dom";
 import ServiceCard from "../Components/ServiceCard";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import Marquee from "react-fast-marquee";
+import GetInTouch from "./../Components/GetInTouch";
+import CustomerReview from "../Components/CustomerReview";
 
 const Home = () => {
   const data = useLoaderData();
@@ -39,13 +41,16 @@ const Home = () => {
           {/* this is cards container */}
           <div>
             <Marquee pauseOnHover={true}>
-            {data.map((service) => (
-              <ServiceCard key={service.id} service={service}></ServiceCard>
-            ))}
+              {data.map((service) => (
+                <ServiceCard key={service.id} service={service}></ServiceCard>
+              ))}
             </Marquee>
           </div>
-
         </div>
+        {/* customer section */}
+        <CustomerReview></CustomerReview>
+
+        <GetInTouch></GetInTouch>
       </div>
     </HelmetProvider>
   );
