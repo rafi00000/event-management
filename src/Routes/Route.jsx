@@ -4,6 +4,9 @@ import Home from "../Pages/Home";
 import ServiceDetails from "../Components/ServiceDetails";
 import AboutUs from "../Components/AboutUs";
 import ContactUs from "../Components/ContactUs";
+import LoginForm from "../Components/form/LoginForm";
+import RegisterForm from "../Components/form/RegisterForm";
+import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
 
 const route = createBrowserRouter([
     {
@@ -17,15 +20,23 @@ const route = createBrowserRouter([
             }, 
             {
                 path: '/service/:id',
-                element: <ServiceDetails></ServiceDetails>
+                element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>
             },
             {
                 path: '/about',
-                element: <AboutUs></AboutUs>
+                element: <PrivateRoute><AboutUs></AboutUs></PrivateRoute>
             },
             {
                 path: '/contactus',
-                element: <ContactUs></ContactUs>
+                element: <PrivateRoute><ContactUs></ContactUs></PrivateRoute>
+            },
+            {
+                path: '/login',
+                element: <LoginForm></LoginForm>
+            },
+            {
+                path: '/register',
+                element: <RegisterForm></RegisterForm>
             }
         ]
     }

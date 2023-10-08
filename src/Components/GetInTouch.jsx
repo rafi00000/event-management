@@ -5,7 +5,7 @@ const GetInTouch = () => {
       <h2 className="text-5xl font-bold text-center text-orange-600">Get in touch</h2>
       <div className="flex items-center justify-center">
         {/* form */}
-        <div className="w-3/5">
+        <div className="w-full md:w-3/5">
           <form className="card-body">
             <div className="form-control">
               <label className="label">
@@ -20,7 +20,7 @@ const GetInTouch = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text"></span>
+                <span className="label-text">Message</span>
               </label>
               <textarea
                 type="text"

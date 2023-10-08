@@ -1,10 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const NavBar = () => {
+  const navigate = useNavigate();
+  const { user, signOutUser } = useContext(AuthContext);
+  console.log(user);
+
   const navLinks = (
     <ul className="menu menu-horizontal px-1 flex gap-4 font-semibold">
       <NavLink
-      to={'/'}
+        to={"/"}
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
@@ -16,7 +22,7 @@ const NavBar = () => {
         Home
       </NavLink>
       <NavLink
-      to={'about'}
+        to={"/about"}
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
@@ -28,7 +34,7 @@ const NavBar = () => {
         About Us
       </NavLink>
       <NavLink
-      to={'contactus'}
+        to={"/contactus"}
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
@@ -39,11 +45,23 @@ const NavBar = () => {
       >
         Contact
       </NavLink>
+      <NavLink
+        to={"/login"}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "h-full text-cyan-500 font-bold underline"
+            : ""
+        }
+      >
+        Login
+      </NavLink>
     </ul>
   );
 
   return (
-    <div className="navbar bg-orange-600 text-white rounded-lg mb-5">
+    <div className="navbar bg-orange-600 lg:text-white rounded-lg mb-5">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -73,7 +91,26 @@ const NavBar = () => {
       <div className="navbar-center hidden lg:flex">{navLinks}</div>
 
       <div className="navbar-end">
-        <button className="btn btn-sm bg-orange-500 text-white">Login</button>
+        {user ? (
+          <div className="flex gap-1 items-center">
+            <img src="" alt="" />
+            <p>{user.email}</p>
+            <button className="text-black" onClick={()=> {
+              signOutUser()
+              .then(data => console.log(data))
+              .catch(err => console.log(err))
+              }}>Sign out</button>
+          </div>
+        ) : (
+          <button
+            className="btn btn-sm bg-orange-500 text-white"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Login
+          </button>
+        )}
       </div>
     </div>
   );
