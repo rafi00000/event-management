@@ -1,32 +1,39 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
 
 const LoginForm = () => {
+  const { signInUser, googleAuth } = useContext(AuthContext);
 
-    const {signInUser} = useContext(AuthContext);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
 
-    const [success, setSuccess] = useState('');
-    const [error, setError] = useState('');
+  const handleGoogleLogin = () => {
+    googleAuth();
+    setError("");
+    setSuccess("");
+    setSuccess("user logged on successfully");
+  };
 
-    const handleLogin = (e) =>{
-        e.preventDefault()
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        console.log(email, password);
-        setError('');
-        setSuccess(''); 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email, password);
+    setError("");
+    setSuccess("");
 
-        signInUser(email, password)
-        .then(data => {
-            console.log(data)
-            setSuccess('Successfully logged in');
-            e.target.reset();
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
+    signInUser(email, password)
+      .then((data) => {
+        console.log(data);
+        setSuccess("Successfully logged in");
+        e.target.reset();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -67,8 +74,18 @@ const LoginForm = () => {
             </div>
             <p className="text-center">
               New Here?{" "}
-              <Link to={'/register'} className="font-bold text-orange-600">Register</Link>
+              <Link to={"/register"} className="font-bold text-orange-600">
+                Register
+              </Link>
             </p>
+            {/* google */}
+            <div
+              className="rounded-3xl border w-fit mx-auto flex gap-3 p-2 cursor-pointer"
+              onClick={handleGoogleLogin}
+            >
+              <FaGoogle className="text-2xl"></FaGoogle>
+              <p>Continue with Google</p>
+            </div>
             <p className="text-center text-green-700 font-bold">{success}</p>
             <p className="text-center text-green-700 font-bold">{error}</p>
           </form>
