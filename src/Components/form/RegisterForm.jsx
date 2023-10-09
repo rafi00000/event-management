@@ -21,7 +21,7 @@ const RegisterForm = () => {
     setError('')
     // validation
     if(password.length < 6){
-      setError('Give password greater then 6 character')
+      toast.error('At lease 6 character is needed');
       return
     }
     else if(!(/^(?=.*[A-Z](?=.*[\W_]).+$)/).test(password)){
@@ -49,12 +49,12 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col w-full">
+    <div className="min-h-screen my-8">
+      <div className="flex-col w-11/12 md:w-2/3 mx-auto border p-10 rounded-xl">
         <div className="text-center">
           <h1 className="text-5xl font-bold">Register Here</h1>
         </div>
-        <div className="card shadow-2xl bg-base-100 w-2/3">
+        <div className="">
           <form className="card-body" onSubmit={handleSubmit}>
             <div className="form-control">
               <label className="label">

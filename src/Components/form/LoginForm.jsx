@@ -43,12 +43,12 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col w-full">
-        <div className="text-center">
+    <div className=" min-h-screen my-8">
+      <div className=" flex-col w-11/12 md:w-2/3 mx-auto border p-2 md:p-10 rounded-xl">
+        <div className="text-center mb-9">
           <h1 className="text-5xl font-bold">Login here</h1>
         </div>
-        <div className="card bg-base-100 w-2/3">
+        <div className=" bg-base-100 ">
           <form className="card-body" onSubmit={handleLogin}>
             <div className="form-control">
               <label className="label">
@@ -91,7 +91,6 @@ const LoginForm = () => {
               onClick={handleGoogleLogin}
             >
               <FaGoogle className="text-2xl"></FaGoogle>
-              <p>Continue with Google</p>
             </div>
             <Toaster></Toaster>
             <p className="text-center text-green-700 font-bold">{success}</p>
