@@ -39,12 +39,10 @@ const Home = () => {
             Services
           </h3>
           {/* this is cards container */}
-          <div>
-            <Marquee pauseOnHover={true}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {data.map((service) => (
                 <ServiceCard key={service.id} service={service}></ServiceCard>
               ))}
-            </Marquee>
           </div>
         </div>
         {/* customer section */}

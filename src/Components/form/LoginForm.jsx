@@ -10,10 +10,14 @@ const LoginForm = () => {
   const [error, setError] = useState("");
 
   const handleGoogleLogin = () => {
-    googleAuth();
-    setError("");
     setSuccess("");
-    setSuccess("user logged on successfully");
+    setError("");
+    googleAuth()
+    .then(data =>{
+      console.log(data);
+      setSuccess("User Login Successfully")
+    })
+    .catch(err => console.log(err))
   };
 
   const handleLogin = (e) => {
@@ -33,6 +37,7 @@ const LoginForm = () => {
       .catch((err) => {
         console.log(err);
       });
+      
   };
 
   return (
@@ -87,7 +92,7 @@ const LoginForm = () => {
               <p>Continue with Google</p>
             </div>
             <p className="text-center text-green-700 font-bold">{success}</p>
-            <p className="text-center text-green-700 font-bold">{error}</p>
+            <p className="text-center text-red-700 font-bold">{error}</p>
           </form>
         </div>
       </div>

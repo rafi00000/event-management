@@ -2,34 +2,34 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
 
-
 const RegisterForm = () => {
-    const { createAccWithMail } = useContext(AuthContext)
-    const [success, setSuccess] = useState('');
-    const [error, setError] = useState('');
+  const { createAccWithMail, update } = useContext(AuthContext);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const name = e.target.name.value;
-        const photoURL = e.target.url.value;
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        console.log(name, photoURL, email, password.length);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const url = e.target.url.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(name, url, email, password.length);
 
-        // validation
-        
+    // creating the account
+    createAccWithMail(email, password)
+      .then((data) => {
+        console.log(data.user);
+        setSuccess("Successfully Created User");
 
-        // creating the account
-        createAccWithMail(email, password)
-        .then(data=> {
-            console.log(data.user)
-            setSuccess('Successfully Created User');
-        })
-        .catch(err => {
-            console.log(err)
-            setError(err)
-        })
-    }
+        update(name, url)
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err);
+      });
+  };
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -88,9 +88,16 @@ const RegisterForm = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-orange-500 text-white hover:bg-orange-600">Register</button>
+              <button className="btn bg-orange-500 text-white hover:bg-orange-600">
+                Register
+              </button>
             </div>
-            <p className="text-center">Already Have an account? <Link to={'/login'} className="font-bold text-orange-600">Login?</Link></p>
+            <p className="text-center">
+              Already Have an account?{" "}
+              <Link to={"/login"} className="font-bold text-orange-600">
+                Login?
+              </Link>
+            </p>
             <p className="text-center text-green-600 font-bold">{success}</p>
             <p className="text-center text-red-600 font-bold">{error}</p>
           </form>

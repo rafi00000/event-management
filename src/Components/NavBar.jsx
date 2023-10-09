@@ -93,13 +93,24 @@ const NavBar = () => {
       <div className="navbar-end">
         {user ? (
           <div className="flex gap-1 items-center">
-            <img src="" alt="" />
-            <p>{user.email}</p>
-            <button className="text-black" onClick={()=> {
-              signOutUser()
-              .then(data => console.log(data))
-              .catch(err => console.log(err))
-              }}>Sign out</button>
+            <div className="flex p-2 rounded-lg outline items-center gap-2">
+              <img
+                src={user.photoURL || "user.png"}
+                className="rounded-full w-8"
+              />
+              <p>{user.displayName || "User"}</p>
+            </div>
+
+            <button
+              className="text-black"
+              onClick={() => {
+                signOutUser()
+                  .then((data) => console.log(data))
+                  .catch((err) => console.log(err));
+              }}
+            >
+              Sign out
+            </button>
           </div>
         ) : (
           <button
