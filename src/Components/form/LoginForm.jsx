@@ -35,6 +35,7 @@ const LoginForm = () => {
         console.log(data);
         toast.success('Successfully created the user')
         e.target.reset();
+        window.location.reload();
       })
       .catch((err) => {
         toast.error('Wrong Username or Password')
