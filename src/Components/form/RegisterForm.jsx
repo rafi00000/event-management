@@ -42,8 +42,10 @@ const RegisterForm = () => {
           })
           .catch((err) => console.log(err));
         toast.success('Successfully created the user')
+        window.location.reload();
         })
       .catch((err) => {
+        console.log(err);
         toast.error('Something went wrong ');
       });
   };

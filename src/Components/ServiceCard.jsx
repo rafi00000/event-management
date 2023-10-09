@@ -10,9 +10,9 @@ const ServiceCard = ({ service }) => {
     <div className="p-9 rounded-lg shadow-xl">
         <img
           src={image}
-          className="rounded-xl"
+          className="rounded-xl h-52 w-full"
         />
-      <div className="space-y-3">
+      <div className="space-y-3 flex flex-col justify-between">
         <h2 className="card-title">{title}</h2>
         <p>{description?.length > 200 ? description.slice(0, 200) : description}...Read More</p>
         <p className='text-xl bg-orange-400 text-white w-fit p-2 rounded-lg font-bold'>Price: {price}$</p>

@@ -16,7 +16,7 @@ const CustomerReview = () => {
             />
           </figure>
           <div className="card-body">
-            <h2 className="text-xl font-semibold">Michael Johnson</h2>
+            <h2 className="text-xl font-semibold">Michael Clint</h2>
             <p>
               Our company annual shareholder meeting was a pivotal event for
               us, and we needed it to run smoothly. Menegerio took care of every
