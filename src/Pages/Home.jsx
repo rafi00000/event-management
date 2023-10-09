@@ -1,7 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import ServiceCard from "../Components/ServiceCard";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import Marquee from "react-fast-marquee";
 import GetInTouch from "./../Components/GetInTouch";
 import CustomerReview from "../Components/CustomerReview";
 

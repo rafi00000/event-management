@@ -35,7 +35,7 @@ const LoginForm = () => {
         e.target.reset();
       })
       .catch((err) => {
-        console.log(err);
+        setError('Wrong user name or password')
       });
       
   };

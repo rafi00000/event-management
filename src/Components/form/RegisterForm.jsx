@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
 
 const RegisterForm = () => {
-  const { createAccWithMail, update } = useContext(AuthContext);
+  const { createAccWithMail } = useContext(AuthContext);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
@@ -15,14 +16,29 @@ const RegisterForm = () => {
     const password = e.target.password.value;
     console.log(name, url, email, password.length);
 
+    // validation
+    if(password.length < 6){
+      setError('Give password greater then 6 character')
+      return
+    }
+    else if(!(/^(?=.*[A-Z](?=.*[\W_]).+$)/).test(password)){
+      setError('give at lease one special character and capital letter')
+      return
+    }
+    
     // creating the account
     createAccWithMail(email, password)
       .then((data) => {
         console.log(data.user);
         setSuccess("Successfully Created User");
 
-        update(name, url)
-          .then((data) => console.log(data))
+        updateProfile(data.user, {
+          displayName: name,
+          photoURL: url
+        })
+          .then((data) => {
+            window.location.reload();
+          })
           .catch((err) => console.log(err));
       })
       .catch((err) => {
