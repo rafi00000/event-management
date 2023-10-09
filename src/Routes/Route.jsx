@@ -7,11 +7,13 @@ import ContactUs from "../Components/ContactUs";
 import LoginForm from "../Components/form/LoginForm";
 import RegisterForm from "../Components/form/RegisterForm";
 import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
+import ErrorPage from "../Components/ErrorPage";
 
 const route = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout></MainLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',

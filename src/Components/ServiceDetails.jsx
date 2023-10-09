@@ -24,8 +24,8 @@ const ServiceDetails = () => {
   }, []);
   return (
     <div className="">
-      <div className="relative " data-aos="zoom-in-down">
-        <img src={image} alt="" className="w-1/2 mx-auto rounded-xl" />
+      <div className=" relative" data-aos="zoom-in-down">
+        <img src={image} alt="" className="w-1/2 mx-auto rounded-xl relative" />
         <p className="absolute rounded-xl bottom-0 right-96 bg-orange-600 p-4 text-white font-semibold text-xl">
           Price: {price}$
         </p>

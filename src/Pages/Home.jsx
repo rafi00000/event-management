@@ -3,6 +3,9 @@ import ServiceCard from "../Components/ServiceCard";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import GetInTouch from "./../Components/GetInTouch";
 import CustomerReview from "../Components/CustomerReview";
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
 
 const Home = () => {
   const data = useLoaderData();
@@ -12,7 +15,6 @@ const Home = () => {
       <div>
         <Helmet>
           <title>Manegerio | Home</title>
-          <link rel="canonical" href="https://www.tacobell.com/" />
         </Helmet>
 
         {/* Banner Starts */}
@@ -22,6 +24,7 @@ const Home = () => {
             backgroundImage:
               "url('https://i.ibb.co/B3dwdqm/share-Holder-Meeting.jpg')",
           }}
+          data-aos="fade-down-left"
         >
           <div className="hero-overlay bg-opacity-60"></div>
           <div className="hero-content text-center text-neutral-content">
@@ -33,7 +36,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="my-8">
+        <div className="my-8" data-aos="zoom-in-down">
           <h3 className="text-4xl text-center font-bold text-orange-500 hover:underline">
             Services
           </h3>

@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const LoginForm = () => {
   const { signInUser, googleAuth } = useContext(AuthContext);
@@ -15,7 +17,7 @@ const LoginForm = () => {
     googleAuth()
     .then(data =>{
       console.log(data);
-      setSuccess("User Login Successfully")
+      toast.success("User Login Successfully")
     })
     .catch(err => console.log(err))
   };
@@ -31,11 +33,11 @@ const LoginForm = () => {
     signInUser(email, password)
       .then((data) => {
         console.log(data);
-        setSuccess("Successfully logged in");
+        toast.success('Successfully created the user')
         e.target.reset();
       })
       .catch((err) => {
-        setError('Wrong user name or password')
+        toast.error('Wrong Username or Password')
       });
       
   };
@@ -91,6 +93,7 @@ const LoginForm = () => {
               <FaGoogle className="text-2xl"></FaGoogle>
               <p>Continue with Google</p>
             </div>
+            <Toaster></Toaster>
             <p className="text-center text-green-700 font-bold">{success}</p>
             <p className="text-center text-red-700 font-bold">{error}</p>
           </form>

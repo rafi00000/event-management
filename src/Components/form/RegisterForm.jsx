@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const RegisterForm = () => {
   const { createAccWithMail } = useContext(AuthContext);
@@ -14,36 +16,35 @@ const RegisterForm = () => {
     const url = e.target.url.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(name, url, email, password.length);
-
+    
+    setSuccess('')
+    setError('')
     // validation
     if(password.length < 6){
       setError('Give password greater then 6 character')
       return
     }
     else if(!(/^(?=.*[A-Z](?=.*[\W_]).+$)/).test(password)){
-      setError('give at lease one special character and capital letter')
+      toast.error('give at lease one special character and capital letter')
       return
     }
     
     // creating the account
     createAccWithMail(email, password)
       .then((data) => {
-        console.log(data.user);
-        setSuccess("Successfully Created User");
-
+        // update name and image
         updateProfile(data.user, {
           displayName: name,
           photoURL: url
         })
           .then((data) => {
-            window.location.reload();
+            console.log(data);
           })
           .catch((err) => console.log(err));
-      })
+        toast.success('Successfully created the user')
+        })
       .catch((err) => {
-        console.log(err);
-        setError(err);
+        toast.error('Something went wrong ');
       });
   };
 
@@ -118,6 +119,7 @@ const RegisterForm = () => {
             <p className="text-center text-red-600 font-bold">{error}</p>
           </form>
         </div>
+        <Toaster></Toaster>
       </div>
     </div>
   );

@@ -1,9 +1,13 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
+
 const CustomerReview = () => {
   return (
     <div className="my-10 space-y-5">
       <h2 className="text-2xl font-bold text-center">Our Happy Customers</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        <div className="card mx-7 glass p-5">
+        <div className="card mx-7 glass p-5" data-aos="flip-down">
           <figure>
             <img
               src="https://i.ibb.co/1YchQG4/user1.jpg"
@@ -20,7 +24,7 @@ const CustomerReview = () => {
             </p>
           </div>
         </div>
-        <div className="card mx-7 glass p-5">
+        <div className="card mx-7 glass p-5" data-aos="flip-down">
           <figure>
             <img
               src="https://i.ibb.co/r0Y35zj/user2.jpg"
@@ -38,7 +42,7 @@ const CustomerReview = () => {
             </p>
           </div>
         </div>
-        <div className="card mx-7 glass p-5">
+        <div className="card mx-7 glass p-5" data-aos="flip-down">
           <figure>
             <img
               src="https://i.ibb.co/SxpP8Tn/user3.jpg"
